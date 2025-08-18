@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>服务器规则 - 二氧化硅生存服务器</title>
+    <title>更新日志 - 二氧化硅生存服务器</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        .rules-container {
+        .changelog-container {
             display: flex;
             max-width: 1200px;
             margin: 40px auto 0 auto;
@@ -54,7 +54,7 @@
             overflow-x: auto;
         }
         @media (max-width: 900px) {
-            .rules-container { flex-direction: column; }
+            .changelog-container { flex-direction: column; }
             .sidebar { width: 100%; border-radius: 16px 16px 0 0; border-right: none; border-bottom: 1px solid #eee; }
             .markdown-content { padding: 18px 8px 18px 8px; }
         }
@@ -64,13 +64,13 @@
     <nav class="navbar">
         <ul>
             <li><a href="index.html">主页</a></li>
-            <li><a href="rules.html" class="active">规则</a></li>
+            <li><a href="rules.html">规则</a></li>
             <li><a href="team.html">管理组</a></li>
-            <li><a href="changelog.html">更新日志</a></li>
+            <li><a href="changelog.html" class="active">更新日志</a></li>
         </ul>
         <div class="server-ip">服务器IP：mc.mcsio2.cn <span class="server-qq">QQ群：902147486</span></div>
     </nav>
-    <div class="rules-container">
+    <div class="changelog-container">
         <aside class="sidebar" id="sidebar"></aside>
         <main class="markdown-content" id="markdown-content"></main>
     </div>
@@ -85,6 +85,6 @@
         </div>
     </footer>
     <script src="https://cdn.bootcdn.net/ajax/libs/marked/15.0.12/marked.min.js"></script>
-    <script src="rules.js"></script>
+    <script src="changelog.js"></script>
 </body>
 </html> 
