@@ -1,6 +1,6 @@
 // 通过fetch异步加载changelog.md
 async function loadMarkdown() {
-    const resp = await fetch('changelog.md');
+    const resp = await fetch('docx/changelog.md');
     if (!resp.ok) {
         document.getElementById('markdown-content').innerHTML = '<p style="color:red">无法加载更新日志内容</p>';
         return '';

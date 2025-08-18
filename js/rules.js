@@ -1,6 +1,6 @@
 // 通过fetch异步加载rules.md
 async function loadMarkdown() {
-    const resp = await fetch('rules.md');
+    const resp = await fetch('docx/rules.md');
     if (!resp.ok) {
         document.getElementById('markdown-content').innerHTML = '<p style="color:red">无法加载规则内容</p>';
         return '';
