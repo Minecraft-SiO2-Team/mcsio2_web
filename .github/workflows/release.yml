@@ -5,6 +5,9 @@ on:
     branches:
       - main
 
+permissions:
+  contents: write
+
 jobs:
   build-and-release:
     runs-on: ubuntu-latest
@@ -12,11 +15,18 @@ jobs:
     steps:
       - name: 检出代码
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
       - name: 打包项目为 zip
         run: |
-          zip -r mcsio2_web.zip . -x "*.git*"
-
+          # 排除不需要的文件
+          zip -r mcsio2_web.zip . \
+            -x "*.git*" \
+            -x ".github/*" \
+            -x ".gitignore" \
+            -x "README.md"
+      
       - name: 获取提交信息
         id: vars
         run: |
@@ -24,7 +34,7 @@ jobs:
           git log -1 --pretty=%B >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
           echo "HASH=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
-
+      
       - name: 创建 Release 并上传 zip
         uses: softprops/action-gh-release@v1
         with:
@@ -32,5 +42,4 @@ jobs:
           name: mcsio2_web-${{ env.HASH }}
           body: ${{ env.MSG }}
           files: mcsio2_web.zip
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
+          generate_release_notes: true  # 可选：自动生成发布说明
